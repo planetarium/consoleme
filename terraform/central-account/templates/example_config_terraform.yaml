@@ -88,4 +88,7 @@ get_user_by_aws_alb_auth_settings:
   jwt_email_key: ${jwt_email_key}
   jwt_groups_key: ${jwt_groups_key}
 
+  access_token_validation:
+    jwks_uri: "https://cognito-idp.${region}.amazonaws.com/${cognito_key}/.well-known/jwks.json"
+
 url: ${user_facing_url}

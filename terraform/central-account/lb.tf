@@ -23,7 +23,7 @@ resource "aws_lb_target_group" "consoleme-servers" {
 
 resource "aws_lb_target_group_attachment" "test" {
   target_group_arn = aws_lb_target_group.consoleme-servers.arn
-  target_id        = module.server.id[0]
+  target_id        = module.server[0].id
   port             = 8081
 }
 

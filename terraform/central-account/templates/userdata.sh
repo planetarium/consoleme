@@ -69,11 +69,13 @@ make dynamo
 unalias python
 unalias pip
 
-sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-sudo yum-config-manager --enable epel
-yum -y install redis
-systemctl status redis
-systemctl start redis
+# sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+# sudo yum-config-manager --enable epel
+# yum -y install redis
+# systemctl status redis
+# systemctl start redis
+docker pull redis
+docker run -p 6379:6379 -d redis
 
 # Update the UI
 cd /apps/consoleme

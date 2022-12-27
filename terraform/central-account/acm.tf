@@ -4,7 +4,6 @@ resource "tls_private_key" "lb-self-signed" {
 }
 
 resource "tls_self_signed_cert" "lb-self-signed" {
-  key_algorithm         = "RSA"
   private_key_pem       = tls_private_key.lb-self-signed.private_key_pem
   validity_period_hours = 8760
   allowed_uses = [

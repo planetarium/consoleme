@@ -234,6 +234,10 @@ variable "lb-authentication-scope" {
   description = "The scopes to request from the OIDC provider, usually email and groups."
 }
 
+variable "cognito_key" {
+  description = "Cognito key"
+}
+
 variable "application_admin" {
   description = "The user or group that will have administrative access in ConsoleMe"
 }

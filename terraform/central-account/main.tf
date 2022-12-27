@@ -1,8 +1,8 @@
 module "server" {
-  source = "git::https://github.com/terraform-aws-modules/terraform-aws-ec2-instance?ref=v2.16.0"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-ec2-instance?ref=v4.2.1"
 
   name                        = module.compute_label.id
-  instance_count              = 1
+  count                       = 1
   ami                         = data.aws_ami.amazon_linux.id
   instance_type               = var.instance_type
   key_name                    = var.key_name
@@ -17,6 +17,7 @@ module "server" {
     CONSOLEME_CONFIG_S3     = format("s3://%s/%s", aws_s3_bucket.consoleme_files_bucket.id, aws_s3_bucket_object.consoleme_config.id)
     custom_user_data_script = var.custom_user_data_script
     consoleme_repo          = var.consoleme_repo
+    cognito_key             = var.cognito_key
   }))
 
   root_block_device = [
