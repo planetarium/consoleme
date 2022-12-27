@@ -38,5 +38,6 @@ resource "aws_s3_bucket_object" "consoleme_config" {
     jwt_groups_key       = var.lb-authentication-jwt-groups-key
     user_facing_url      = var.user_facing_url == "" ? "https://${aws_lb.public-to-private-lb.dns_name}:${var.lb_port}" : var.user_facing_url
     logout_url           = var.logout_url
+    cognito_key          = var.cognito_key
   }))
 }
