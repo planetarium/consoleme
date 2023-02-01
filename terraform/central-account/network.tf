@@ -1,5 +1,5 @@
 module "network" {
-  source = "github.com/terraform-aws-modules/terraform-aws-vpc?ref=v2.77.0"
+  source = "github.com/terraform-aws-modules/terraform-aws-vpc?ref=v3.19.0"
 
   name = module.network_label.id
   cidr = var.vpc_cidr
@@ -13,8 +13,6 @@ module "network" {
   enable_dhcp_options                = true
   enable_dns_hostnames               = true
   enable_dns_support                 = true
-  enable_s3_endpoint                 = true
-  enable_dynamodb_endpoint           = true
   tags                               = var.default_tags
   create_vpc                         = true
   public_subnet_suffix               = "public-subnet"

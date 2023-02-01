@@ -1,31 +1,37 @@
 resource "random_string" "omnipotence" {
   length  = 4
   special = false
-  number  = false
+  numeric = false
   upper   = false
 }
 
 resource "aws_s3_bucket" "consoleme_files_bucket" {
   bucket = "${lower(var.bucket_name_prefix)}-${random_string.omnipotence.result}"
-  acl    = "private"
-
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
-      }
-    }
-  }
 
   force_destroy = true
   tags          = merge(tomap({ "Name" = var.bucket_name_prefix }), var.default_tags)
 }
 
-resource "aws_s3_bucket_object" "consoleme_config" {
+resource "aws_s3_bucket_acl" "consoleme_files_bucket_acl" {
+  bucket = aws_s3_bucket.consoleme_files_bucket.id
+  acl    = "private"
+}
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "consoleme_files_bucket_encryption_configuration" {
+  bucket = aws_s3_bucket.consoleme_files_bucket.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
+  }
+}
+
+resource "aws_s3_object" "consoleme_config" {
   bucket = aws_s3_bucket.consoleme_files_bucket.bucket
   key    = "config.yaml"
 
-  content = templatefile("${path.module}/templates/example_config_terraform.yaml", tomap({
+  content = templatefile("${path.module}/templates/config_terraform.yaml", tomap({
     demo_target_role_arn = aws_iam_role.consoleme_target.arn
     demo_app_role_arn_1  = aws_iam_role.consoleme_example_app_role_1.arn
     demo_app_role_arn_2  = aws_iam_role.consoleme_example_app_role_2.arn

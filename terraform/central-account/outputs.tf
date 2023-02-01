@@ -19,7 +19,7 @@ If you want to access the server over SSH, consider using Systems Manager or a V
 
 If you want to experiment with the ConsoleMe config, you can find the config files at the path:
 
-$ cd /apps/consoleme/example_config/
+$ cd /apps/consoleme/config/
 
 README
 }

@@ -49,13 +49,13 @@ cloud_credential_authorization_mapping:
 application_settings:
   application_1:
     owner: ${application_admin}
-    owner_url: https://www.example.com/groupa@example.com
+    owner_url: https://www.example.com/groupa@planetariumhq.com
     app_url: https://www.example.com/ci_cd_pipeline/application_1
     roles:
       - ${demo_app_role_arn_1}
   application_2:
     owner: ${application_admin}
-    owner_url: https://www.example.com/groupb@example.com
+    owner_url: https://www.example.com/groupb@planetariumhq.com
     app_url: https://www.example.com/ci_cd_pipeline/application_2
     roles:
       - ${demo_app_role_arn_2}

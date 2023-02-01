@@ -51,7 +51,7 @@ resource "aws_iam_role" "consoleme_example_user_role_1" {
   name               = "ConsoleMeUserA"
   assume_role_policy = data.aws_iam_policy_document.consoleme_target_trust_policy.json
   tags = {
-    consoleme-authorized = "consoleme_admins@example.com"
+    consoleme-authorized = "consoleme_admins@planetariumhq.com"
   }
 }
 
@@ -59,7 +59,7 @@ resource "aws_iam_role" "consoleme_example_user_role_2" {
   name               = "ConsoleMeUserB"
   assume_role_policy = data.aws_iam_policy_document.consoleme_target_trust_policy.json
   tags = {
-    consoleme-authorized = "configeditors@example.com:consoleme_admins@example.com"
+    consoleme-authorized = "configeditors@planetariumhq.com:consoleme_admins@planetariumhq.com"
   }
 }
 
@@ -68,7 +68,7 @@ resource "aws_iam_role" "consoleme_example_app_role_1" {
   name               = "ConsoleMeAppA"
   assume_role_policy = data.aws_iam_policy_document.consoleme_target_trust_policy.json
   tags = {
-    consoleme-authorized-cli-only = "groupa@example.com"
+    consoleme-authorized-cli-only = "groupa@planetariumhq.com"
   }
 }
 
@@ -76,6 +76,6 @@ resource "aws_iam_role" "consoleme_example_app_role_2" {
   name               = "ConsoleMeAppB"
   assume_role_policy = data.aws_iam_policy_document.consoleme_target_trust_policy.json
   tags = {
-    consoleme-authorized-cli-only = "groupa@example.com:groupb@example.com"
+    consoleme-authorized-cli-only = "groupa@planetariumhq.com:groupb@planetariumhq.com"
   }
 }
